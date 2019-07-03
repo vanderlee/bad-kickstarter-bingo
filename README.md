@@ -1,2 +1,1 @@
-# bad-kickstarter-bingo
-Bad Board Game Kickstarter Bingo
+# Bad Board Game Kickstarter Bingo
