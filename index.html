@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+    <!--
+        Based on work by Caroline Berg
+        Web implementation by Martijn van der Lee
+        Creative Commons Attribution Non-Commercial Share Alike 3.0 license.
+    -->
+    <meta charset="utf-8">
+    <title>Bad Board Game Kickstarter Bingo</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        html {
+            background-color: #FCF7EF;
+            padding:        2vh;
+        }
+
+        #bingocard {
+            width: 80vh;
+            padding: 3vh;
+            text-align: center;
+
+            background: #E9D7AD;
+
+            font-family: Verdana, Helvetica, Arial, sans-serif;
+            font-size: 1.5vh;
+
+            box-shadow: 0 1vh 2vh rgba(0,0,0,.5);
+        }
+
+        #bingocard #title {
+            font-size: 4vh;
+            padding-bottom: 2vh;
+        }
+
+        #bingocard .box {
+            position: relative;
+            display: inline-table;
+            width: 15vh;
+            height: 15vh;
+            border: 2px solid #98815A;
+            box-shadow: 0 0 .25vh #98815A;
+            border-radius: 2vh;
+            margin: .25vh;
+            vertical-align: middle;
+
+            background-color: #E6D783;
+        }
+
+        #bingocard .box:nth-child(odd) {
+            background-color: #FCF7EF;
+        }
+
+        #bingocard .box:nth-child(13) {
+            background-color: #CFBC3E;
+        }
+
+        #bingocard .box .content {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 1vh;
+        }
+
+        #bingocard .box .content-size-0 {   font-size: 3.6vh; }
+        #bingocard .box .content-size-1 {   font-size: 3.2vh; }
+        #bingocard .box .content-size-2 {   font-size: 2vh; }
+        #bingocard .box .content-size-3 {   font-size: 1.8vh; }
+        #bingocard .box .content-size-4 {   font-size: 1.6vh; }
+    </style>
+</head>
+
+<body>
+<div id="bingocard">
+    <div id="title">Bad Board Game Kickstarter Bingo</div>
+    <div id="boxes"></div>
+</div>
+
+<script>
+    const texts = {
+        center: [
+            "First created, 0 backed",
+        ],
+        box: [
+            "\"Friends told me they would buy this\"",
+            "Adds alcohol to be innovative",
+            "Being part of the playtest is a reward",
+            "Calls the game \"unique\"",
+            "Confident major retailers will sell it",
+            "Creator has an \"amazing\" idea",
+            "Designer posts \"Trust me\"",
+            "Designer threatens to sue commentators",
+            "Exploding Kittens knockoff",
+            "Extremely detailed pledge levels",
+            "Great IP, crappy mechanics",
+            "Images have nothing to do with game",
+            "Insults backers in sales pitch",
+            "Insults backers in sales pitch",
+            "Limited reward tiers do not add up to goal",
+            "Lots of typos",
+            "Low goal promises to make game into an app",
+            "Low quality clip-art images",
+            "Made to get kids off their phones",
+            "No game details",
+            "No images",
+            "No punctuation in the description",
+            "No videos",
+            "Oblivious to the concept of IP",
+            "Only risk is how to get the IP rights",
+            "Poorly done home-made components",
+            "Promises tournament play",
+            "Rekicked with a slightly lower goal",
+            "Reward tiers don't include the game",
+            "Risks completely unrelated to game",
+            "Roll and move mechanics",
+            "Text stolen from a successful Kickstarter",
+            "Unaware of current board game market",
+            "Unrealistic funding goal",
+            "Vague rules",
+            "Webpage is YouTube home page",
+            "Yet another CAH knockoff",
+        ],
+    };
+
+    $(() => {
+        const boxes = 25,
+            centerBox = Math.ceil(boxes / 2),
+            centerText = texts.center[Math.floor(Math.random() * texts.center.length)],
+            boxTexts   = texts.box;
+
+        for (let box = 1; box <= boxes; ++box) {
+            const text = box === centerBox? centerText : boxTexts.splice(Math.floor(Math.random() * boxTexts.length), 1)[0];
+
+            const $box = $('<div/>')
+                    .addClass('box'),
+                $content = $('<div/>')
+                    .addClass('content')
+                    .addClass('content-size-' + Math.floor(text.length / 8))
+                    .text(text)
+                    .appendTo($box);
+            $box.appendTo('#boxes');
+        }
+    });
+</script>
+</body>
+
+</html>
