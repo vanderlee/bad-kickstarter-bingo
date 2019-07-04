@@ -3,8 +3,8 @@ html {
 }
 
 #bingocard {
-    width: 80vh;
-    padding: 1vh 3vh 2vh;
+    width: 75vh;
+    padding: 1vh 2vh 1.5vh;
     text-align: center;
 
     font-family: Verdana, Helvetica, Arial, sans-serif;
@@ -12,8 +12,8 @@ html {
 }
 
 #bingocard #title {
-    font-size: 8vh;
-    padding-bottom: 2vh;
+    font-size: 7vh;
+    padding-bottom: 1vh;
     color: transparent;
     background: url("../img/logo.png") no-repeat center center;
     background-size: contain;
@@ -23,8 +23,8 @@ html {
 #bingocard .box {
     position: relative;
     display: inline-table;
-    width: 15vh;
-    height: 15vh;
+    width: 14vh;
+    height: 14vh;
     border: 2px solid black;
     border-radius: 2vh;
     margin: .25vh;
@@ -39,11 +39,11 @@ html {
 }
 
 #bingocard .box .content-size-0 {
-    font-size: 3.6vh;
+    font-size: 3.3vh;
 }
 
 #bingocard .box .content-size-1 {
-    font-size: 3.2vh;
+    font-size: 3.1vh;
 }
 
 #bingocard .box .content-size-2 {
