@@ -20,7 +20,7 @@
 
         #bingocard {
             width: 80vh;
-            padding: 3vh;
+            padding: 1vh 3vh 2vh;
             text-align: center;
 
             background: #E9D7AD;
@@ -28,12 +28,15 @@
             font-family: Verdana, Helvetica, Arial, sans-serif;
             font-size: 1.5vh;
 
-            box-shadow: 0 1vh 2vh rgba(0,0,0,.5);
+            box-shadow: 0 .5vh 1vh rgba(0,0,0,.25);
         }
 
         #bingocard #title {
-            font-size: 4vh;
+            font-size: 8vh;
             padding-bottom: 2vh;
+            color: transparent;
+            background: url("img/logo.png") no-repeat center center;
+            background-size: contain;
         }
 
         #bingocard .box {
@@ -54,8 +57,9 @@
             background-color: #FCF7EF;
         }
 
-        #bingocard .box:nth-child(13) {
-            background-color: #CFBC3E;
+        #bingocard .box.box-center {
+            background: #CFBC3E url("img/star.png") no-repeat center center;
+            background-size: contain;
         }
 
         #bingocard .box .content {
@@ -69,6 +73,12 @@
         #bingocard .box .content-size-2 {   font-size: 2vh; }
         #bingocard .box .content-size-3 {   font-size: 1.8vh; }
         #bingocard .box .content-size-4 {   font-size: 1.6vh; }
+
+        #bingocard #footer {
+            text-align: right;
+            font-size: 1vh;
+            padding-top: 1vh;
+        }
     </style>
 </head>
 
@@ -76,6 +86,11 @@
 <div id="bingocard">
     <div id="title">Bad Board Game Kickstarter Bingo</div>
     <div id="boxes"></div>
+    <div id="footer">
+        Created by Caroline Berg,
+        web version by Martijn van der lee
+        under a Creative Commons Attribution Non-Commercial Share Alike 3.0 license.
+    </div>
 </div>
 
 <script>
@@ -84,18 +99,30 @@
             "First created, 0 backed",
         ],
         box: [
+            "\"Better than Monopoly\"",
+            "\"Components may not be as pictured\"",
             "\"Friends told me they would buy this\"",
+            "\"My really smart friend helped me\"",
             "Adds alcohol to be innovative",
+            "Artist reveals: has not been paid",
             "Being part of the playtest is a reward",
+            "Bizarre ranting by the project creator",
+            "Blatently stolen art",
+            "Blatently unrealistic timeline",
             "Calls the game \"unique\"",
+            "Canceled without explanation",
             "Confident major retailers will sell it",
             "Creator has an \"amazing\" idea",
+            "Designer has public feud with creditor",
             "Designer posts \"Trust me\"",
             "Designer threatens to sue commentators",
+            "Edgy \"humor\"",
             "Exploding Kittens knockoff",
             "Extremely detailed pledge levels",
+            "Game parents divorce!",
             "Great IP, crappy mechanics",
             "Images have nothing to do with game",
+            "Images taken from a succesful Kickstarter",
             "Insults backers in sales pitch",
             "Limited reward tiers do not add up to goal",
             "Lots of typos",
@@ -105,11 +132,16 @@
             "No game details",
             "No images",
             "No punctuation in the description",
+            "No risks or challenges",
             "No videos",
             "Oblivious to the concept of IP",
             "Only risk is how to get the IP rights",
+            "Picturs or models infringe IP",
+            "Pledge includes signed copy",
             "Poorly done home-made components",
+            "Promises miniatures at cheap prices",
             "Promises tournament play",
+            "Puts own money into Kickstarter funding",
             "Rekicked with a slightly lower goal",
             "Reward tiers don't include the game",
             "Risks completely unrelated to game",
@@ -118,8 +150,10 @@
             "Unaware of current board game market",
             "Unrealistic funding goal",
             "Vague rules",
+            "Webpage is Facebook home page",
             "Webpage is YouTube home page",
             "Yet another CAH knockoff",
+            "Yet another Monopoly knockoff",
         ],
     };
 
@@ -130,10 +164,12 @@
             boxTexts   = texts.box;
 
         for (let box = 1; box <= boxes; ++box) {
-            const text = box === centerBox? centerText : boxTexts.splice(Math.floor(Math.random() * boxTexts.length), 1)[0];
+            const isCenterBox = box === centerBox,
+                text = isCenterBox? centerText : boxTexts.splice(Math.floor(Math.random() * boxTexts.length), 1)[0];
 
             const $box = $('<div/>')
-                    .addClass('box'),
+                    .addClass('box')
+                    .toggleClass('box-center', isCenterBox),
                 $content = $('<div/>')
                     .addClass('content')
                     .addClass('content-size-' + Math.floor(text.length / 8))
