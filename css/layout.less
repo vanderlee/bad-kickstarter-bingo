@@ -1,0 +1,66 @@
+html {
+  padding: 2vh;
+}
+
+#bingocard {
+  width: 75vh;
+  padding: 1vh 2vh 1.5vh;
+  text-align: center;
+
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 1.5vh;
+
+  #title {
+    font-size: 7vh;
+    padding-bottom: 1vh;
+    color: transparent;
+    background: url("../img/logo.png") no-repeat center center;
+    background-size: contain;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .box {
+    position: relative;
+    display: inline-table;
+    width: 14vh;
+    height: 14vh;
+    border: 2px solid black;
+    border-radius: 2vh;
+    margin: .25vh;
+    vertical-align: middle;
+    cursor: pointer;
+
+    .content {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 1vh;
+    }
+
+    .content-size-0 {
+      font-size: 3.2vh;
+    }
+
+    .content-size-1 {
+      font-size: 2.8vh;
+    }
+
+    .content-size-2 {
+      font-size: 1.9vh;
+    }
+
+    .content-size-3 {
+      font-size: 1.7vh;
+    }
+
+    .content-size-4 {
+      font-size: 1.5vh;
+    }
+  }
+
+
+  #footer {
+    text-align: right;
+    font-size: 1vh;
+    padding-top: 1vh;
+  }
+}

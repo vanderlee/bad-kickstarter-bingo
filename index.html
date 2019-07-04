@@ -2,18 +2,14 @@
 <html>
 
 <head>
-    <!--
-        Based on work by Caroline Berg
-        Web implementation by Martijn van der Lee
-        Creative Commons Attribution Non-Commercial Share Alike 3.0 license.
-    -->
     <meta charset="utf-8">
     <title>Bad Board Game Kickstarter Bingo</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
-    <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+    <link rel="stylesheet/less" type="text/css" href="css/layout.less" />
+    <link rel="stylesheet/less" type="text/css" href="css/screen.less" media="screen"/>
+    <link rel="stylesheet/less" type="text/css" href="css/print.less" media="print"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" integrity="sha256-j93v7jDprdkNOGaRtTrZJ2h0VK6nJy29Qk3+zcHOv+0=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,92 +24,31 @@
 </div>
 
 <script>
-    const texts = {
-        center: [
-            "First created, 0 backed",
-        ],
-        box: [
-            "\"Better than Monopoly\"",
-            "\"Components may not be as pictured\"",
-            "\"Friends told me they would buy this\"",
-            "\"My really smart friend helped me\"",
-            "Adds alcohol to be innovative",
-            "Artist reveals: has not been paid",
-            "Being part of the playtest is a reward",
-            "Bizarre ranting by the project creator",
-            "Blatently stolen art",
-            "Blatently unrealistic timeline",
-            "Calls the game \"unique\"",
-            "Canceled without explanation",
-            "Confident major retailers will sell it",
-            "Creator has an \"amazing\" idea",
-            "Designer has public feud with creditor",
-            "Designer posts \"Trust me\"",
-            "Designer threatens to sue commentators",
-            "Edgy \"humor\"",
-            "Exploding Kittens knockoff",
-            "Extremely detailed pledge levels",
-            "Game parents divorce!",
-            "Great IP, crappy mechanics",
-            "Images have nothing to do with game",
-            "Images taken from a succesful Kickstarter",
-            "Insults backers in sales pitch",
-            "Limited reward tiers do not add up to goal",
-            "Lots of typos",
-            "Low goal promises to make game into an app",
-            "Low quality clip-art images",
-            "Made to get kids off their phones",
-            "No game details",
-            "No images",
-            "No punctuation in the description",
-            "No risks or challenges",
-            "No videos",
-            "Oblivious to the concept of IP",
-            "Only risk is how to get the IP rights",
-            "Picturs or models infringe IP",
-            "Pledge includes signed copy",
-            "Poorly done home-made components",
-            "Promises miniatures at cheap prices",
-            "Promises tournament play",
-            "Puts own money into Kickstarter funding",
-            "Rekicked with a slightly lower goal",
-            "Reward tiers don't include the game",
-            "Risks completely unrelated to game",
-            "Roll and move mechanics",
-            "Text stolen from a successful Kickstarter",
-            "Unaware of current board game market",
-            "Unrealistic funding goal",
-            "Vague rules",
-            "Webpage is Facebook home page",
-            "Webpage is YouTube home page",
-            "Yet another CAH knockoff",
-            "Yet another Monopoly knockoff",
-        ],
-    };
-
     $(() => {
-        const boxes = 25,
-            centerBox = Math.ceil(boxes / 2),
-            centerText = texts.center[Math.floor(Math.random() * texts.center.length)],
-            boxTexts   = texts.box;
+        $.getJSON("res/texts.json", (texts) => {
+            const boxes = 25,
+                centerBox = Math.ceil(boxes / 2),
+                centerText = texts.center[Math.floor(Math.random() * texts.center.length)],
+                boxTexts   = texts.box;
 
-        for (let box = 1; box <= boxes; ++box) {
-            const isCenterBox = box === centerBox,
-                text = isCenterBox? centerText : boxTexts.splice(Math.floor(Math.random() * boxTexts.length), 1)[0];
+            for (let box = 1; box <= boxes; ++box) {
+                const isCenterBox = box === centerBox,
+                    text = isCenterBox? centerText : boxTexts.splice(Math.floor(Math.random() * boxTexts.length), 1)[0];
 
-            const $box = $('<div/>')
-                    .addClass('box')
-                    .toggleClass('box-center', isCenterBox)
-                    .click(function() {
-                        $(this).toggleClass('box-selected');
-                    }),
-                $content = $('<div/>')
-                    .addClass('content')
-                    .addClass('content-size-' + Math.floor(text.length / 8))
-                    .text(text)
-                    .appendTo($box);
-            $box.appendTo('#boxes');
-        }
+                const $box = $('<div/>')
+                        .addClass('box')
+                        .toggleClass('box-center', isCenterBox)
+                        .click(function() {
+                            $(this).toggleClass('box-selected');
+                        }),
+                    $content = $('<div/>')
+                        .addClass('content')
+                        .addClass('content-size-' + Math.floor(text.length / 8))
+                        .text(text)
+                        .appendTo($box);
+                $box.appendTo('#boxes');
+            }
+        });
     });
 </script>
 </body>
