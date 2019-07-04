@@ -1,0 +1,9 @@
+#bingocard {
+    outline: 1px solid black;
+}
+
+#bingocard .box.box-selected {
+    background-color: #ccc;
+    color: white;
+    text-shadow: 0 0 4px black;
+}

@@ -11,75 +11,9 @@
     <title>Bad Board Game Kickstarter Bingo</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <style>
-        html {
-            background-color: #FCF7EF;
-            padding:        2vh;
-        }
-
-        #bingocard {
-            width: 80vh;
-            padding: 1vh 3vh 2vh;
-            text-align: center;
-
-            background: #E9D7AD;
-
-            font-family: Verdana, Helvetica, Arial, sans-serif;
-            font-size: 1.5vh;
-
-            box-shadow: 0 .5vh 1vh rgba(0,0,0,.25);
-        }
-
-        #bingocard #title {
-            font-size: 8vh;
-            padding-bottom: 2vh;
-            color: transparent;
-            background: url("img/logo.png") no-repeat center center;
-            background-size: contain;
-        }
-
-        #bingocard .box {
-            position: relative;
-            display: inline-table;
-            width: 15vh;
-            height: 15vh;
-            border: 2px solid #98815A;
-            box-shadow: 0 0 .25vh #98815A;
-            border-radius: 2vh;
-            margin: .25vh;
-            vertical-align: middle;
-
-            background-color: #E6D783;
-        }
-
-        #bingocard .box:nth-child(even) {
-            background-color: #FCF7EF;
-        }
-
-        #bingocard .box.box-center {
-            background: #CFBC3E url("img/star.png") no-repeat center center;
-            background-size: contain;
-        }
-
-        #bingocard .box .content {
-            display: table-cell;
-            vertical-align: middle;
-            padding: 1vh;
-        }
-
-        #bingocard .box .content-size-0 {   font-size: 3.6vh; }
-        #bingocard .box .content-size-1 {   font-size: 3.2vh; }
-        #bingocard .box .content-size-2 {   font-size: 2vh; }
-        #bingocard .box .content-size-3 {   font-size: 1.8vh; }
-        #bingocard .box .content-size-4 {   font-size: 1.6vh; }
-
-        #bingocard #footer {
-            text-align: right;
-            font-size: 1vh;
-            padding-top: 1vh;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
 </head>
 
 <body>
@@ -169,7 +103,10 @@
 
             const $box = $('<div/>')
                     .addClass('box')
-                    .toggleClass('box-center', isCenterBox),
+                    .toggleClass('box-center', isCenterBox)
+                    .click(function() {
+                        $(this).toggleClass('box-selected');
+                    }),
                 $content = $('<div/>')
                     .addClass('content')
                     .addClass('content-size-' + Math.floor(text.length / 8))

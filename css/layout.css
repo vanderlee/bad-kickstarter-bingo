@@ -1,0 +1,65 @@
+html {
+    padding: 2vh;
+}
+
+#bingocard {
+    width: 80vh;
+    padding: 1vh 3vh 2vh;
+    text-align: center;
+
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 1.5vh;
+}
+
+#bingocard #title {
+    font-size: 8vh;
+    padding-bottom: 2vh;
+    color: transparent;
+    background: url("../img/logo.png") no-repeat center center;
+    background-size: contain;
+    -webkit-print-color-adjust: exact;
+}
+
+#bingocard .box {
+    position: relative;
+    display: inline-table;
+    width: 15vh;
+    height: 15vh;
+    border: 2px solid black;
+    border-radius: 2vh;
+    margin: .25vh;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#bingocard .box .content {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1vh;
+}
+
+#bingocard .box .content-size-0 {
+    font-size: 3.6vh;
+}
+
+#bingocard .box .content-size-1 {
+    font-size: 3.2vh;
+}
+
+#bingocard .box .content-size-2 {
+    font-size: 2vh;
+}
+
+#bingocard .box .content-size-3 {
+    font-size: 1.8vh;
+}
+
+#bingocard .box .content-size-4 {
+    font-size: 1.6vh;
+}
+
+#bingocard #footer {
+    text-align: right;
+    font-size: 1vh;
+    padding-top: 1vh;
+}
