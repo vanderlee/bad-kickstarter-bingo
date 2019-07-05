@@ -3,6 +3,8 @@ https://vanderlee.github.io/bad-kickstarter-bingo/
 
 Web-based random, interactive and printable bingo card.
 
+Click on the boxes to highlight the boxes.
+
 ## Credits
 Based on work by Caroline Berg
 
