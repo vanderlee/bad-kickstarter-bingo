@@ -1,29 +1,37 @@
+@color-paper: hsla(37, 68%, 96%, 1);
+@color-card: #E9D7AD;
+@color-border: #98815A;
+
+@color-box-odd: hsla(51, 66%, 71%, 1);
+@color-box-odd-selected: hsla(179, 66%, 61%, 1);
+@color-box-even: @color-paper;
+@color-box-even-selected: hsla(165, 68%, 86%, 1);
+
 html {
-  background-color: #FCF7EF;
+  background-color: @color-paper;
 }
 
 #bingocard {
-  background: #E9D7AD;
+  background: @color-card;
+  background: radial-gradient(circle at 39% 39%, @color-paper 0%, darken(@color-paper, 25%) 100%);
   box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .25);
 
-
   .box {
-    border: 2px solid #98815A;
-    box-shadow: 0 0 .25vmin #98815A;
-    background-color: hsla(51, 66%, 71%, 1);
+    border: 2px solid @color-border;
+    box-shadow: 0 0 .25vmin @color-border;
+    background-color: @color-box-odd;
 
     &.box-selected {
       border-color: #03a9f4;
       box-shadow: 0 0 2vmin .5vmin #03a9f4;
-      background-color: hsla(179, 66%, 61%, 1);
+      background-color: @color-box-odd-selected;
     }
 
-
     &:nth-child(even) {
-      background-color: hsla(37, 68%, 96%, 1);
+      background-color: @color-box-even;
 
       &.box-selected {
-        background-color: hsla(165, 68%, 86%, 1);
+        background-color: @color-box-even-selected;
       }
     }
 
